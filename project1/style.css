@@ -1,0 +1,398 @@
+/* ============================================================
+   GLOBAL STYLES
+   These apply to the whole page
+============================================================ */
+
+/* Import a clean font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap');
+
+/* The * selector means "apply this to everything on the page" */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* makes sizing more predictable */
+}
+
+/* CSS Variables — we define our colors once here and reuse them below */
+:root {
+  --navy:      #1a2b4a;   /* dark navy blue — main color */
+  --navy-dark: #111d33;   /* slightly darker navy for hover effects */
+  --white:     #ffffff;
+  --light-gray:#f4f6f9;   /* very light gray for section backgrounds */
+  --text:      #2d2d2d;   /* near-black for body text */
+  --subtext:   #555555;   /* medium gray for secondary text */
+  --accent:    #2e6da4;   /* lighter blue for links and highlights */
+}
+
+/* Base styles for the whole page */
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 16px;
+  color: var(--text);
+  background-color: var(--white);
+  line-height: 1.7; /* space between lines of text */
+}
+
+
+/* ============================================================
+   NAVIGATION BAR
+============================================================ */
+
+nav {
+  background-color: var(--navy);
+  padding: 16px 40px;
+  display: flex;                  /* puts items in a row */
+  justify-content: space-between; /* pushes name left, links right */
+  align-items: center;
+  position: sticky; /* sticks to the top as you scroll */
+  top: 0;
+  z-index: 100; /* makes sure it stays on top of other content */
+}
+
+/* The name on the left side of the nav */
+.nav-name {
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* The list of nav links — removed the bullet points as taught in class */
+nav ul {
+  list-style: none;
+  display: flex; /* puts list items in a row */
+  gap: 28px;     /* space between each link */
+}
+
+/* Style each nav link */
+nav ul li a {
+  color: var(--white);
+  text-decoration: none; /* removes the underline */
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Change color when hovering over a link */
+nav ul li a:hover {
+  color: #a8c4e0; /* light blue on hover */
+}
+
+/* This class is added by JavaScript to show the active section link */
+nav ul li a.active {
+  border-bottom: 2px solid #a8c4e0;
+  padding-bottom: 2px;
+}
+
+
+/* ============================================================
+   SECTIONS — general rules for all sections
+============================================================ */
+
+section {
+  padding: 70px 40px;
+  max-width: 900px;    /* content won't stretch too wide on large screens */
+  margin: 0 auto;      /* centers the content horizontally */
+}
+
+/* Alternate the background color every other section for visual separation */
+#about,
+#experience {
+  background-color: var(--light-gray);
+  max-width: 100%;   /* these sections span full width */
+  padding: 70px 0;
+}
+
+/* Re-center the inner content for full-width sections */
+#about > *,
+
+#experience > * {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+/* This div lines images up side by side and centers them */
+.image-row {
+  display: flex;           /* puts the images in a horizontal row */
+  justify-content: center; /* centers the whole row */
+  gap: 20px;               /* space between each image */
+  flex-wrap: wrap;         /* on small screens, images wrap to the next line */
+  margin: 20px 0;          /* space above and below the image row */
+}
+
+/* All images inside an image-row */
+.image-row img {
+  width: 280px;       /* fixed width for each image */
+  height: 200px;      /* fixed height — keeps them all the same size */
+  object-fit: cover;  /* crops neatly without stretching */
+  border-radius: 4px; /* slightly rounded corners */
+}
+
+/* Section headings */
+h2 {
+  font-size: 28px;
+  color: var(--navy);
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--navy); /* underline effect on headings */
+}
+
+/* Paragraphs get a little breathing room below them */
+p {
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+
+/* ============================================================
+   HOME SECTION
+============================================================ */
+
+#home {
+  text-align: center;
+  padding: 100px 40px;
+}
+
+/* The big name heading */
+#home h1 {
+  font-size: 48px;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+/* The subtitle line under the name */
+.title {
+  font-size: 18px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* The intro paragraph */
+.intro {
+  font-size: 17px;
+  color: var(--subtext);
+  max-width: 680px;
+  margin: 0 auto 30px auto; /* centered with space below */
+}
+
+
+/* ============================================================
+   BUTTON STYLES
+============================================================ */
+
+.btn {
+  display: inline-block;
+  background-color: var(--navy);
+  color: var(--white);
+  padding: 12px 28px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+  margin: 16px 0; /* adds space above and below the button */
+}
+
+/* Darken the button when hovered */
+.btn:hover {
+  background-color: var(--navy-dark);
+}
+
+/* ============================================================
+   SKILLS SECTION
+============================================================ */
+
+/* A simple 2-column grid for the skill cards */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two equal columns */
+  gap: 24px; /* space between cards */
+}
+
+/* Each skill card */
+.skill-card {
+  position:relative;
+  background-color: var(--light-gray);
+  border-left: 4px solid var(--navy); /* colored left border accent */
+  padding: 20px;
+  border-radius: 4px;
+}
+
+/* Heading inside each card */
+.skill-card h3 {
+  font-size: 16px;
+  color: var(--navy);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+/* The bullet list inside each card */
+.skill-card ul {
+  list-style: disc;
+  padding-left: 18px;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* The small icon in the top right corner */
+.skill-icon {
+  position: absolute; /* takes the image out of the normal flow */
+  top: 10px;          /* distance from the top edge of the card */
+  right: 10px;        /* distance from the right edge of the card */
+  width: 120px;        /* adjust size to your liking */
+  height: 120px;
+  object-fit: contain; /* keeps the icon proportions correct */
+}
+
+/* ============================================================
+   EXPERIENCE SECTION
+============================================================ */
+
+/* Each job card */
+.job-card {
+  background-color: var(--white);
+  border-left: 4px solid var(--accent);
+  padding: 24px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+}
+
+/* Job title */
+.job-card h3 {
+  font-size: 18px;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+/* Company and date line */
+.job-meta {
+  font-size: 14px;
+  color: var(--subtext);
+  margin-bottom: 12px;
+}
+
+/* Bullet list of responsibilities */
+.job-card ul {
+  list-style: disc;
+  padding-left: 20px;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* ============================================================
+   CONTACT SECTION
+============================================================ */
+
+/* Email and phone line */
+.contact-info {
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
+.contact-info a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* The contact form container */
+.contact-form {
+  display: flex;
+  flex-direction: column; /* stacks inputs on top of each other */
+  gap: 16px;
+  max-width: 600px;
+}
+
+/* Style for text inputs and the textarea */
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-family: inherit; /* use the same font as the rest of the page */
+  width: 100%;
+}
+
+/* Submit button */
+.contact-form button {
+  background-color: var(--navy);
+  color: var(--white);
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;          /* removes default button border */
+  border-radius: 4px;
+  cursor: pointer;       /* shows a hand cursor on hover */
+  width: fit-content;    /* button only as wide as its text */
+}
+
+.contact-form button:hover {
+  background-color: var(--navy-dark);
+}
+
+/* The feedback message shown after form submission */
+#form-feedback {
+  font-size: 15px;
+  font-weight: 600;
+  min-height: 20px; /* reserves space so the page doesn't jump */
+}
+
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+footer {
+  background-color: var(--navy);
+  color: var(--white);
+  text-align: center;
+  padding: 24px 40px;
+  font-size: 14px;
+}
+
+
+/* ============================================================
+   RESPONSIVE DESIGN — for smaller screens like phones
+   Everything inside this block only applies when the screen
+   is 600px wide or less
+============================================================ */
+
+@media (max-width: 600px) {
+
+  /* Stack nav links vertically on small screens */
+  nav {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Shrink the big home heading */
+  #home h1 {
+    font-size: 32px;
+  }
+
+  /* Stack skill cards to one column on small screens */
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Reduce padding on all sections */
+  section,
+  #about > *,
+  #experience > * {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+}

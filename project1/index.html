@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- This tells the browser what kind of document this is and how to read the characters -->
+  <meta charset="UTF-8" />
+
+  <!-- This makes the site look correct on mobile phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- This is the title shown on the browser tab -->
+  <title>Jagdesh Karran | Portfolio</title>
+
+  <!-- This is for a fav icon on website tab-->
+  <link rel="icon" type="image/png" href=".\letter-jk-simple-linked-logo-vector.jpg">
+
+  <!-- This links our separate CSS file so the page gets styled -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION BAR
+       The bar at the top with links to each section of the page, this was on bootstrap website under "Navbar" and "Navs & tabs"
+  ============================================================ -->
+  <nav id="navbar">
+    <span class="nav-name">Jagdesh Karran</span>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ============================================================
+       HOME SECTION
+       The first thing visitors see — name, title, and a short intro
+  ============================================================ -->
+  <section id="home">
+    <h1>Jagdesh Karran</h1>
+    <p class="title">IT & Systems Professional | Computer Science Student</p>
+    <p class="intro">
+      U.S. Marine Corps veteran and IT professional with nearly 6 years of experience
+      in mission-critical systems. Currently pursuing a B.S. in Computer Science at Queens College.
+      Passionate about problem solving, optimizing processes, and building reliable systems.
+    </p>
+    <!-- This button scrolls the user down to the contact section -->
+    <a href="#contact" class="btn">Get In Touch</a>
+  </section>
+
+
+  <!-- ============================================================
+       ABOUT SECTION
+       A bit more detail about who I am
+  ============================================================ -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am an IT and Systems Operations professional based in New York. I have spent nearly
+      6 years supporting transportation and communications infrastructure in a 24/7 command
+      center environment. My background includes network monitoring, systems administration,
+      incident management, and hardware and software troubleshooting.
+    </p>
+
+    <div class="image-row">
+      <img src="Bus Command Center.jpg" alt="Photo of Bus Command Center">
+      <img src="Fiber Patch Panel.jpg" alt="Photo of Fiber Patch Panel">
+      <img src="Access Panel Board.jpg" alt="Photo of Access Panel Board">
+    </div>
+
+    <p>
+      Before my civilian career, I served in the United States Marine Corps Reserve as a MOS 2841
+      Ground Electronics Transmission Systems Maintainer, where I maintained and repaired
+      radio and communications equipment. That experience taught me discipline, attention to
+      detail, and how to stay calm under pressure.
+    </p>
+
+    <div class="image-row">
+      <img src=".\450-59e4c3e973b77-Harris+radio.jpg" alt="Harris UHF Portable Radio">
+      <img src=".\HMMWV.png" alt="the HMMWV and I">
+      <img src=".\USMC Certificates.jpg" alt="USMC Certificate that i obtained in training school">
+      <img src=".\USMC Certificate 2.jpg" alt="other USMC Certificate that i obtained in training school">
+    </div>
+
+    <p>
+      I am currently studying Computer Science at Queens College and working toward a career
+      in software engineering or systems-focused technology roles.
+    </p>
+
+    <!-- Resume download button — replace "resume.pdf" with your actual file name -->
+    <a href="Jagdesh Karran Resume.pdf" class="btn" download>Download Resume</a>
+  </section>
+
+
+  <!-- ============================================================
+       SKILLS SECTION
+       A list of technical and professional skills
+  ============================================================ -->
+  <section id="skills">
+    <h2>Skills</h2>
+
+    <div class="skills-grid">
+
+      <!-- Each "skill-card" is one category of skills -->
+      <div class="skill-card">
+        <img src="code-syntax-on-a-computer-screen.jpg" alt="Programming icon" class="skill-icon" />
+        <h3>Programming Languages</h3>
+        <ul>
+          <li>Python</li>
+          <li>C, C#, C++</li>
+          <li>Java</li>
+          <li>JavaScript</li>
+          <li>CSS</li>
+        </ul>
+      </div>
+
+      <div class="skill-card">
+        <img src="Linux-Logo-1996-present.png" alt="Linux icon" class="skill-icon" />
+        <h3>Systems & Tools</h3>
+        <ul>
+          <li>Windows Server & Administration</li>
+          <li>Active Directory, GPO, SCCM</li>
+          <li>Linux Servers</li>
+          <li>SolarWinds</li>
+          <li>Visual Studio, NetBeans</li>
+        </ul>
+      </div>
+
+      <div class="skill-card">
+        <img src="sop-standard-operating-procedure-vector-stock-illustration-2JF881Y.jpg" alt="SOP icon" class="skill-icon" />
+        <h3>IT Operations</h3>
+        <ul>
+          <li>Network & Systems Monitoring</li>
+          <li>Incident & Ticket Management</li>
+          <li>Hardware Troubleshooting</li>
+          <li>Security & Compliance</li>
+          <li>Documentation, SOPs, MOPs</li>
+        </ul>
+      </div>
+
+      <div class="skill-card">
+        <img src="asset-management-vector-icon-illustration-600nw-1453526573.webp" alt="Asset management image" class="skill-icon" />
+        <h3>Other</h3>
+        <ul>
+          <li>Radio & Communications Systems</li>
+          <li>Asset & Inventory Management</li>
+          <li>Training & Staff Development</li>
+          <li>Systems Integration</li>
+          <li>Google IT Support Professional (Coursera)</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       EXPERIENCE SECTION
+       Work history shown as individual cards
+  ============================================================ -->
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <!-- Each "job-card" is one position -->
+    <div class="job-card">
+      <h3>Engineering Technician IV</h3>
+      <p class="job-meta">Parsons Corporation &mdash; New York City &nbsp;|&nbsp; Mar 2023 &ndash; March 2026</p>
+      <ul>
+        <li>Provide operational support for a 24/7 transportation command center supporting bus communications and monitoring systems.</li>
+        <li>Configure, deploy, and maintain network devices including workstations and servers.</li>
+        <li>Serve as primary contact for incident tickets — performing log analysis, root cause investigation, and coordinating resolution.</li>
+        <li>Administer Windows environments: Active Directory, GPOs, SCCM, system imaging, patching, and security compliance.</li>
+        <li>Monitor network and radio infrastructure using SolarWinds and other monitoring systems.</li>
+        <li>Maintain documentation, SOPs, and MOPs; provide training to staff, dispatchers, and interns.</li>
+      </ul>
+    </div>
+
+    <div class="job-card">
+      <h3>Electrician Journeyman</h3>
+      <p class="job-meta">Parsons Corporation &mdash; New York City &nbsp;|&nbsp; Sep 2020 &ndash; Mar 2023</p>
+      <ul>
+        <li>Installed and maintained bus communication systems, ensuring seamless connectivity.</li>
+        <li>Soldered connections and troubleshot hardware to maintain system integrity.</li>
+        <li>Contributed to improved operational efficiency and reduced downtime.</li>
+      </ul>
+    </div>
+
+    <div class="job-card">
+      <h3>Ground Electronics Transmission Systems Maintainer</h3>
+      <p class="job-meta">U.S. Marine Corps Reserve &mdash; Brooklyn, NY &nbsp;|&nbsp; Jun 2018 &ndash; Jun 2024</p>
+      <ul>
+        <li>Installed and maintained ground electronics systems, ensuring operational readiness.</li>
+        <li>Diagnosed and repaired radio systems, optimizing communication efficiency.</li>
+        <li>Collaborated on installations, reducing downtime and enhancing team performance.</li>
+        <li>Received Academic Achievement Award and Certificate of Commendation (2019).</li>
+      </ul>
+    </div>
+
+    <div class="job-card">
+      <h3>B.S. Computer Science (In Progress)</h3>
+      <p class="job-meta">Queens College &mdash; Flushing, NY &nbsp;|&nbsp; Sep 2023 &ndash; Present</p>
+      <ul>
+        <li>Currently pursuing a Bachelor of Science in Computer Science.</li>
+        <li>Completed Google IT Support Professional Certificate via Coursera (2023).</li>
+      </ul>
+    </div>
+
+  </section>
+
+
+  <!-- ============================================================
+       CONTACT SECTION
+       A simple form for visitors to send a message
+  ============================================================ -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+
+    <p class="contact-info">
+      Email: <a href="mailto:920jskarran@gmail.com">920jskarran@gmail.com</a> &nbsp;|&nbsp;
+      Phone: <a href="tel:3476501360">347-650-1360</a>
+    </p>
+
+    <!-- Clicking this opens their email app with your address pre-filled -->
+       <a href="mailto:920jskarran@gmail.com?subject=Portfolio Inquiry" class="btn">Email Me Directly</a>
+
+    <p>
+      Alternatively, fill out the form below.
+    </p>
+
+    <!-- The form — JavaScript in script.js will handle the validation -->
+    <div class="contact-form">
+
+      <input type="text" id="name" placeholder="Your Name" />
+      <input type="email" id="email" placeholder="Your Email" />
+      <textarea id="message" placeholder="Your Message" rows="5"></textarea>
+
+      <!-- When clicked, the sendMessage() function in script.js runs -->
+      <button onclick="sendMessage()">Send Message</button>
+
+      <!-- This paragraph is hidden by default. JS will show it after submission -->
+      <p id="form-feedback"></p>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       Simple footer at the bottom of the page
+  ============================================================ -->
+  <footer>
+    <p>&copy; 2025 Jagdesh Karran. All rights reserved.</p>
+  </footer>
+
+
+  <!-- This links our JavaScript file — placed at the bottom so the page loads first -->
+  <script src="script.js"></script>
+
+</body>
+</html>
