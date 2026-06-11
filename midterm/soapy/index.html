@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     index.html — Soupy storefront
+     ============================================================
+
+     Structure overview:
+       <head>   — metadata, links to style.css
+       <header> — brand name, navigation, social icons, cart
+       <section class="headline">  — headline + headline image
+       <section class="shop">  — product grid with add-to-cart
+       <script> — links to script.js
+
+     All product images and SVG icons are embedded as base64
+     data URIs so the page is fully self-contained (no server
+     or external files needed to view it).
+     ============================================================ -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Responsive viewport: tells mobile browsers to use the
+       device width instead of zooming out to a desktop layout -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soapy</title>
+  <!-- External stylesheet — all visual rules live in style.css -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── HEADER ──────────────────────────────────────────────────
+     Three columns:
+       .header-left   → social media icon links
+       .header-center → brand name + nav (absolutely centred)
+       .header-right  → cart item count + basket icon
+
+     The header has position:relative so .header-center can use
+     position:absolute to sit exactly in the middle regardless
+     of how wide the left/right columns are. -->
+<header>
+
+  <!-- LEFT: social icons — each wraps an SVG in an <a> tag -->
+  <div class="header-left">
+    <a href="#"><img src="facebook-icon.svg" alt="Facebook"></a>
+    <a href="#"><img src="insta-icon.svg" alt="Instagram"></a>
+    <a href="#"><img src="yt-icon.svg" alt="YouTube"></a>
+  </div>
+
+  <!-- CENTER: brand name above the nav links -->
+  <div class="header-center">
+    <h1>Soapy</h1>
+    <!-- Main site navigation -->
+    <nav>
+      <a href="#">Shop</a>
+      <a href="#">Journal</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+
+  <!-- RIGHT: clicking this scrolls to the shop section.
+       #cart-count starts at 0 and is updated by addToCart()
+       in script.js whenever the user adds a product. -->
+  <div class="header-right"
+       onclick="document.querySelector('.shop').scrollIntoView({behavior:'smooth'})">
+    <span id="cart-count">0</span>
+    <img src="basket-icon.svg" alt="Cart">
+  </div>
+
+</header>
+
+
+<!-- ── HEADLINE SECTION ────────────────────────────────────────────
+     Full-width banner immediately below the header (no gap).
+     Left side: large headline + "Shop now" CTA button.
+     Right side: the main product photo. -->
+<section class="headline">
+
+  <!-- Headline and call-to-action -->
+  <div class="headline-text">
+    <h2>Soap for every body.</h2>
+    <!-- Clicking "Shop now" smoothly scrolls down to the shop
+         section. return false prevents the default anchor jump. -->
+    <a href="#shop"
+       onclick="document.querySelector('.shop').scrollIntoView({behavior:'smooth'}); return false;">
+      Shop now
+    </a>
+  </div>
+
+  <!-- Headline product image (base64-embedded JPEG) -->
+  <div class="headline-image">
+    <img src="main-img.jpeg" alt="main image">
+
+</section>
+
+
+<!-- ── SHOP SECTION ────────────────────────────────────────────
+     Sits 10px below the headline (margin-top: 10px in style.css).
+     Contains the "Shop our soaps" heading and three product
+     cards laid out side by side. -->
+<section class="shop">
+
+  <h2>Shop our soaps</h2>
+
+  <!-- Product grid: three cards in a horizontal row -->
+  <div class="products">
+
+    <!-- ── PRODUCT 1: Eucalyptus and Citrus ───────────────────
+         Each card contains:
+           - product photo
+           - product name
+           - price
+           - quantity selector (- / number / +) + add-to-cart button
+
+         changeQty(this, -1 or +1) is called by the - and + buttons.
+         addToCart(this) is called by the "Add to cart" button.
+         Both functions are defined in script.js. -->
+    <div class="product-card">
+      <img src="eucalyptus-soap.jpg" alt="image of eucalyptus and citrus">
+      <span class="product-name">Eucalyptus and Citrus</span>
+      <span class="product-price">$12.00</span>
+
+      <!-- Controls row: qty pill + add button -->
+      <div class="product-controls">
+        <!-- Quantity pill: - [number] + -->
+        <div class="qty-selector">
+          <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+          <span class="qty-display">1</span><!-- default qty = 1 -->
+          <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+        </div>
+        <!-- Add to cart: passes itself so addToCart can find the
+             qty display in the same .product-controls parent -->
+        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to cart</button>
+      </div>
+    </div>
+
+    <!-- ── PRODUCT 2: Sage and Cedarwood ──────────────────── -->
+    <div class="product-card">
+      <img src="sage-soap.jpg" alt="image of sage and cedarwood">
+      <span class="product-name">Sage and Cedarwood</span>
+      <span class="product-price">$12.00</span>
+
+      <div class="product-controls">
+        <div class="qty-selector">
+          <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+          <span class="qty-display">1</span>
+          <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to cart</button>
+      </div>
+    </div>
+
+    <!-- ── PRODUCT 3: Sandalwood and Rose ─────────────────── -->
+    <div class="product-card">
+      <img src="sandalwood-soap.jpg" alt="image of sandalwood soap">
+      <span class="product-name">Sandalwood and Rose</span>
+      <span class="product-price">$12.00</span>
+
+      <div class="product-controls">
+        <div class="qty-selector">
+          <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+          <span class="qty-display">1</span>
+          <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to cart</button>
+      </div>
+    </div>
+
+  </div><!-- /.products -->
+</section><!-- /.shop -->
+
+
+<!-- Link to external JS file — placed at the bottom of <body>
+     so that all HTML elements exist in the DOM before the
+     script runs (no need for DOMContentLoaded wrappers). -->
+<script src="script.js"></script>
+
+</body>
+</html>

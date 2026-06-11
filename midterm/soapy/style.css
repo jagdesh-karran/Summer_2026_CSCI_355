@@ -1,0 +1,324 @@
+
+/* ============================================================
+   style.css — Soapy storefront styles
+   ============================================================
+
+   TABLE OF CONTENTS
+   1. Reset & base
+   2. Header
+   3. Headline section
+   4. Shop section
+   5. Product cards
+   6. Quantity selector
+   7. Add-to-cart button & flash animation
+   ============================================================ */
+
+
+/* ── 1. RESET & BASE ─────────────────────────────────────────
+   Remove default browser margin/padding on every element and
+   make box-sizing consistent (border/padding included in
+   declared width, not added on top). */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background-color: #ffffff;
+  color: #1a1a1a;            /* near-black for text */
+}
+
+
+/* ── 2. HEADER ───────────────────────────────────────────────
+   Three-column layout using flexbox + space-between:
+     Left  → social icons
+     Center → brand name + nav (absolutely positioned so it
+               stays truly centred regardless of icon/cart width)
+     Right → cart counter + basket icon
+
+   position: relative on the header lets the absolutely-
+   positioned center block anchor to it. */
+header {
+  background-color: #e0ddd7;
+  padding: 30px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative; /* anchor for .header-center absolute positioning */
+}
+
+/* Left column: social icon links sit in a horizontal row */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px; /* space between each icon */
+  padding-top: 50px;
+}
+
+/* Icon images: small, slightly muted, brighten on hover */
+.header-left a img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.header-left a:hover img { opacity: 1; }
+
+/* Center column: pulled out of normal flow and placed exactly
+   in the middle of the header with left:50% + translateX(-50%) */
+.header-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+/* Brand name — serif, lightweight, no bold */
+.header-center h1 {
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 15px;
+}
+
+/* Navigation links — uppercase sans-serif for contrast with
+   the serif brand name */
+nav {
+  display: flex;
+  gap: 28px;
+}
+nav a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-family: 'Lucida Sans Typewriter', 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+nav a:hover { text-decoration: underline; }
+
+/* Right column: cart count number + basket icon */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding-top: 42px;
+}
+.header-right img {
+  width: 22px;
+  height: 22px;
+  opacity: 0.8;
+}
+
+/* The live cart counter — updated by addToCart() in script.js */
+#cart-count {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  min-width: 20px; /* prevents layout shift when number grows */
+}
+
+
+/* ── 3. HEADLINE SECTION ─────────────────────────────────────────
+   Full-width banner directly below the header (no margin gap).
+   Flexbox splits it into:
+     Left  → headline + CTA button
+     Right → product photo
+   A slightly darker background distinguishes it from the page. */
+.headline {
+  background-color: #e0ddd7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 60px 60px 80px;
+  min-height: 340px;
+}
+
+/* Large bold headline */
+.headline-text h2 {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  max-width: 340px;
+  margin-bottom: 28px;
+}
+
+/* Pill-shaped "Shop now" CTA — inverts on hover */
+.headline-text a {
+  display: inline-block;
+  border: 1px solid #1a1a1a;
+  padding: 10px 40px;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  border-radius: 20px;
+  transition: background 0.2s, color 0.2s;
+}
+.headline-text a:hover {
+  background: #1a1a1a;
+  color: #f0ece4;
+}
+
+/* Headline image container — fixed size, clips overflow so the
+   photo fills it without distorting */
+.headline-image {
+  flex-shrink: 0; /* don't compress when viewport shrinks */
+  width: 340px;
+  height: 280px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.headline-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* crop to fill without stretching */
+}
+
+
+/* ── 4. SHOP SECTION ─────────────────────────────────────────
+   Sits 10px below the headline (margin-top: 10px) as per the design.
+   Slightly lighter background than the headline for visual separation.
+   Centers the heading and the product grid. */
+
+.shop {
+  background-color: #e0ddd7;
+  padding: 60px 40px 80px;
+}
+
+/* Section heading */
+.shop h2 {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  letter-spacing: 0.02em;
+}
+
+/* Horizontal row of product cards, wrapping on small screens */
+.products {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap; /* cards stack vertically on narrow viewports */
+}
+
+
+/* ── 5. PRODUCT CARDS ────────────────────────────────────────
+   Each card is a fixed-width flex column:
+     → product image
+     → product name
+     → price
+     → quantity selector + add-to-cart button  */
+.product-card {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Square product photo — object-fit covers without distortion */
+.product-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 3px;
+  margin-bottom: 12px;
+}
+
+/* Product name below the image */
+.product-card .product-name {
+  font-family: 'Lucida Sans Typewriter', 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+/* Price in a lighter sans-serif */
+.product-card .product-price {
+  font-family: 'Lucida Sans Typewriter', 'Courier New', monospace;
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+/* Row that holds the qty selector and the add-to-cart button */
+.product-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* ── 6. QUANTITY SELECTOR ────────────────────────────────────
+   A pill-shaped row: [ - ][ 1 ][ + ]
+   The two buttons decrease/increase the number displayed
+   between them. JavaScript enforces a minimum of 1. */
+.qty-selector {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 20px; /* pill shape */
+  overflow: hidden;    /* clips button hover backgrounds to the pill */
+}
+
+/* Decrement / increment buttons */
+.qty-btn {
+  background: none;
+  border: none;
+  padding: 6px 7px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  line-height: 1;
+  transition: background 0.15s;
+}
+.qty-btn:hover { background: #e8e3d8; }
+
+/* The number displayed between the two buttons */
+.qty-display {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  min-width: 20px;   /* keeps layout stable for 1- vs 2-digit numbers */
+  text-align: center;
+}
+
+
+/* ── 7. ADD-TO-CART BUTTON & FLASH ANIMATION ─────────────────
+   Same pill shape as the qty selector.
+   On click (handled in script.js) it briefly turns warm brown
+   via the .flash class, then reverts — giving the user instant
+   visual feedback that the item was added. */
+.add-to-cart-btn {
+  background: none;
+  border: 1px solid #1a1a1a;
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap; /* prevent "Add to cart" from line-breaking */
+}
+.add-to-cart-btn:hover {
+  background: #1a1a1a;
+  color: #f0ece4;
+}
+.add-to-cart-btn:active {
+  transform: scale(0.97); /* slight press-down feel on click */
+}
+
+/* Flash class applied momentarily by addToCart() in script.js.
+   The void offsetWidth trick in JS forces a reflow so the
+   animation replays even if the button is clicked repeatedly. */
+.flash {
+  animation: flash-bg 0.4s ease;
+}
+@keyframes flash-bg {
+  0%   { background: #c8b99a; color: #fff; }
+  100% { background: none;    color: #1a1a1a; }
+}
