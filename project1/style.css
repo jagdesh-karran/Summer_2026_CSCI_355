@@ -280,6 +280,25 @@ p {
   line-height: 1.8;
 }
 
+/* ============================================================
+   HOBBY SECTION
+============================================================ */
+
+/* Hobby section gets the same light gray background as About */
+#hobby {
+  background-color: var(--light-gray);
+  max-width: 100%;
+  padding: 70px 0;
+}
+
+/* Re-center the inner content */
+#hobby > * {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
 
 /* ============================================================
    CONTACT SECTION
